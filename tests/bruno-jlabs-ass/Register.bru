@@ -1,0 +1,19 @@
+meta {
+  name: Register
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8000/api/signup
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "Dave Angelo Jimene",
+    "email": "ddjimenez555@gmail.co",
+    "password": "limitless1@"
+  }
+}

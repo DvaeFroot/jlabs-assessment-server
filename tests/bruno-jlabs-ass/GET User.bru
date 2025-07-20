@@ -1,0 +1,22 @@
+meta {
+  name: GET User
+  type: http
+  seq: 3
+}
+
+get {
+  url: http://localhost:8000/api/me
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: 7|U7nNqnxcoIssvC25YGqbWWDpTh4GoW4aM5bSJu75625e6208
+}
+
+body:json {
+  {
+    "email": "ddjimenez555@gmail.co",
+    "password": "limitless1@"
+  }
+}
