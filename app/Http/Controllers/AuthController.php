@@ -28,8 +28,9 @@ class AuthController extends Controller
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->json([
-            'success' => true,
-        ])->cookie('access_token', $token, 60, '/', null, false, true, false);
+            'access_token' => $token,
+            'token_type' => 'Bearer',
+        ]);
     }
 
     /**
@@ -52,8 +53,9 @@ class AuthController extends Controller
         $token = $user->createToken('access_token')->plainTextToken;
 
         return response()->json([
-            'success' => true,
-        ])->cookie('access_token', $token, 60, '/', null, false, true, false);
+            'access_token' => $token,
+            'token_type' => 'Bearer',
+        ]);
     }
 
     /**
@@ -65,9 +67,7 @@ class AuthController extends Controller
         $user = $request->user();
         $user->currentAccessToken()->delete();
 
-        return response()->json([
-            'success' => true,
-        ])->cookie('access_token', null, -1);
+        return response()->json(['message' => 'Successfully logged out']);
     }
 
     /**
@@ -75,8 +75,6 @@ class AuthController extends Controller
      */
     public function me(Request $request): JsonResponse
     {
-        // dd($request->user());
-        //
         return response()->json($request->user());
     }
 }
